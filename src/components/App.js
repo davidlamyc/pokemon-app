@@ -14,8 +14,9 @@ import '../main.css';
 class App extends React.Component {
     render() {
         return (
+            <div class="site-container">
             <Router history={history}>
-            <div>
+            <div class="site-content">
                 <Header />
                 <div style={{paddingTop: '3rem'}} className="ui container">
                     <div className="pusher">
@@ -32,6 +33,7 @@ class App extends React.Component {
                 <Footer />
             </div>    
         </Router>
+        </div>
         )
     }
 }

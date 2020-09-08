@@ -12,16 +12,13 @@ class SeriesDetailsPage extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log('did mount', this.props);
-        axios.get(`http://numbersapi.com/${this.props.year}/year`)
+        axios.get(`http://numberapi.com/${this.props.year}/year`)
             .then(response => {
-                console.log(response.data)
                 this.setState({ yearFact: response.data })
             })
     }
 
     render() {
-        console.log("&&&&&", this.props)
         if (this.props.series) {
             return (
                 <div class="ui modal active">
@@ -36,7 +33,9 @@ class SeriesDetailsPage extends React.Component {
                         <div class="description">
                         <div class="ui header">{this.props.series.description}</div>
                         <p style={{fontWeight: "bold"}}>What happened in the year when the movie came out?</p>
-                        <p>{this.state.yearFact}</p>
+                        {
+                            this.state.yearFact === '' ? <a class="ui red label">Something went wrong, please try again later!</a> : <p>{this.state.yearFact}</p>
+                        }
                         </div>
                     </div>
                     <div class="actions">
@@ -65,9 +64,6 @@ class SeriesDetailsPage extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-
-    console.log('single',ownProps.match.params.id);
-    console.log('all',state.series);
     const series = state.series.find(series => { 
         return series.title === ownProps.match.params.id
     });
