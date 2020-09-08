@@ -1,0 +1,8 @@
+.ui.card {
+    display: inline-block;
+    margin: 2em;
+}
+
+.ui.card:hover {
+    transform: scale(1.05);
+}
