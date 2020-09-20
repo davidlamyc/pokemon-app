@@ -4,16 +4,10 @@ const Footer = () => {
     return (
         <div style={{
             width: '100%',
-            padding: '2rem',
+            padding: '1rem',
             textAlign: 'center'
         }}>
-            <p style={{margin: '0 auto'}}>Copyright @ 2020 Demo Streaming</p>
-            <p>Home | Terms and Conditions | Privacy Policy | Collection Statement | Help | Manage Account</p>
-            <div>
-                <i className="facebook icon"></i>
-                <i className="twitter icon"></i>
-                <i className="instagram icon"></i>
-            </div>
+            <p style={{margin: '0 auto'}}>Copyright @ 2020 David Lam</p>
         </div>
     )
 }

@@ -1,18 +1,17 @@
 import axios from 'axios';
-import data from '../data.json';
 
-export const fetchMovies = () => async dispatch => {
-    const movies = data.entries.filter(entry => {
-        return entry.programType === 'movie';
-    })
-
-    dispatch({ type: 'FETCH_MOVIES', payload: movies })
-};
-
-export const fetchSeries = () => async dispatch => {
-    const series = data.entries.filter(entry => {
-        return entry.programType === 'series';
-    })
-
-    dispatch({ type: 'FETCH_SERIES', payload: series })
+export const fetchPokemon = (currentPage) => async dispatch => {
+    const pokemonPerPage = 15;
+    const offset = (currentPage - 1) * pokemonPerPage;
+    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonPerPage}&offset=${offset}`)
+    const pokemon = response.data.results;
+    await Promise.all(
+        pokemon.map(async (p, i) => {
+            const { data: pokemonDetail } = await axios.get(p.url)
+            // get the location for each encounter, and add to 'encounter' object
+            pokemon[i].id = pokemonDetail.id;
+            pokemon[i].img = pokemonDetail.sprites.other['official-artwork'].front_default;
+        })
+    )
+    dispatch({ type: 'FETCH_POKEMON', payload: pokemon })
 };

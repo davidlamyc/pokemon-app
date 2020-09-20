@@ -3,6 +3,7 @@ html {
     min-height: 100%;
 }
 
+
 .ui.card {
     display: inline-block;
     margin: 2em;
@@ -10,9 +11,4 @@ html {
 
 .ui.card:hover {
     transform: scale(1.05);
-}
-
-i {
-    transform: scale(2);
-    padding: 0 1.2rem;
 }

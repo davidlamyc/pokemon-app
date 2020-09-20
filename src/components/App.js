@@ -1,11 +1,9 @@
 import React from 'react';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Redirect } from 'react-router-dom';
 
 import Header from './Header';
-import HomePage from './HomePage';
-import MoviesPage from './MoviesPage';
-import SeriesPage from './SeriesPage';
-import SeriesDetailsPage from './SeriesDetailsPage';
+import PokemonPage from './PokemonPage';
+import PokemonDetailsPage from './PokemonDetailsPage';
 import Footer from './Footer';
 import history from '../history';
 
@@ -22,10 +20,11 @@ class App extends React.Component {
                     <div className="pusher">
                         <div className="ui padded basic segment">
                             <Router history={history}>
-                                <Route path="/" exact component={HomePage} />
-                                <Route path="/series" exact component={SeriesPage} />
-                                <Route path="/seriesDetails/:id/:year" exact component={SeriesDetailsPage} />
-                                <Route path="/movies" exact component={MoviesPage} />
+                                <Route path="/" exact >
+                                    <Redirect to="/pokemon?page=1"/>
+                                </Route>
+                                <Route path="/pokemon" exact component={PokemonPage} />
+                                <Route path="/pokemon/:id" exact component={PokemonDetailsPage} key={new Date()}/>
                             </Router>
                         </div>
                     </div>

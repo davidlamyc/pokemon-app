@@ -1,3 +1,1 @@
-Hi Oracle, thank you for your time and consideration!
-
-David
+## Please go to http://david-pokemon-app.s3-website-ap-southeast-1.amazonaws.com to see the application!

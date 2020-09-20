@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux';
-
-import movieReducer from './moviesReducer';
-import seriesReducer from './seriesReducer';
+import pokemonReducer from './pokemonReducer';
 
 export default combineReducers({
-    movies: movieReducer,
-    series: seriesReducer
+    pokemon: pokemonReducer
 })
